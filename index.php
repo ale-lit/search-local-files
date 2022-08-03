@@ -22,6 +22,8 @@ function searchFiles(string $dir, string $fileName, array &$searchResult)
 
 searchFiles($searchRoot, $searchName, $searchResult);
 
+$searchResult = array_filter($searchResult, fn($item) => filesize($item) > 0);
+
 if (empty($searchResult)) {
     echo 'Поиск не дал результатов';
 } else {
